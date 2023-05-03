@@ -1,0 +1,13 @@
+[InputMethod]
+# Translatable name of the input method
+Name=ChatGPT
+# Icon name
+Icon=chatgpt
+# A short label that present the name of input method
+Label=ChatGPT
+# ISO 639 language code
+LangCode=ja
+# Match addon name
+Addon=chatgpt
+# Whether this input method support customization
+# Configurable=True
