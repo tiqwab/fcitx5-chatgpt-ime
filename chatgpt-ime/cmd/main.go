@@ -23,7 +23,7 @@ type request struct {
 
 type response struct {
 	Candidates   []string `json:"candidates"`
-	ErrorMessage string   `json:"error_message"`
+	ErrorMessage string   `json:"error_message,omitempty"`
 }
 
 func createOpenAIHandler(conversionFunc func(string) ([]string, error)) func(http.ResponseWriter, *http.Request) {
