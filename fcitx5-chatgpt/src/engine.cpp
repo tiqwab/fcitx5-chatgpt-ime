@@ -84,7 +84,12 @@ void ChatGPTState::keyEventWhenNotConverting(fcitx::KeyEvent &keyEvent) {
         preedit.append(buffer_.userInput(), fcitx::TextFormatFlag::Underline);
     }
 
-    ic->inputPanel().setPreedit(preedit);
+    if (ic->capabilityFlags().test(fcitx::CapabilityFlag::Preedit)) {
+        preedit.setCursor(preedit.textLength());
+        ic->inputPanel().setClientPreedit(preedit);
+    } else {
+        ic->inputPanel().setPreedit(preedit);
+    }
     ic->updatePreedit();
     ic->updateUserInterface(fcitx::UserInterfaceComponent::InputPanel);
 }
@@ -136,7 +141,12 @@ void ChatGPTState::keyEventWhenConverting(fcitx::KeyEvent &keyEvent) {
         preedit.append(buffer_.userInput(), fcitx::TextFormatFlag::Underline);
     }
 
-    ic->inputPanel().setPreedit(preedit);
+    if (ic->capabilityFlags().test(fcitx::CapabilityFlag::Preedit)) {
+        preedit.setCursor(preedit.textLength());
+        ic->inputPanel().setClientPreedit(preedit);
+    } else {
+        ic->inputPanel().setPreedit(preedit);
+    }
     ic->updatePreedit();
     ic->updateUserInterface(fcitx::UserInterfaceComponent::InputPanel);
 }
