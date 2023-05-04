@@ -147,9 +147,9 @@ void ChatGPTState::reset() {
 }
 
 ChatGPTEngine::ChatGPTEngine(fcitx::Instance *instance) : instance_(instance), factory_([this](fcitx::InputContext &ic) {
+    FCITX_INFO() << "create state";
     return new ChatGPTState(this, &ic);
 }) {
-    FCITX_INFO() << "create state";
     instance->inputContextManager().registerProperty("chatgptState", &factory_);
 }
 
